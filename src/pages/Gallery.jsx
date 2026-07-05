@@ -10,11 +10,7 @@ export default function Gallery() {
   useEffect(() => {
     const fetchBeritas = async () => {
       try {
-        const response = await fetch(`${STRAPI_URL}/api/beritas?populate=*`, {
-          headers: {
-            'Authorization': import.meta.env.VITE_STRAPI_TOKEN ? `Bearer ${import.meta.env.VITE_STRAPI_TOKEN}` : ''
-          }
-        });
+        const response = await fetch(`${STRAPI_URL}/api/beritas?populate=*`);
         const result = await response.json();
 
         console.log("=== DEBUG GALLERY BERITA ===", result);

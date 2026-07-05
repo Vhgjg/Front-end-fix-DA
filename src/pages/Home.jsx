@@ -10,11 +10,7 @@ export default function Home() {
   useEffect(() => {
     const fetchNews = async () => {
       try {
-        const response = await fetch(`${STRAPI_URL}/api/beritas?populate=*&pagination[limit]=4`, {
-          headers: {
-            'Authorization': import.meta.env.VITE_STRAPI_TOKEN ? `Bearer ${import.meta.env.VITE_STRAPI_TOKEN}` : ''
-          }
-        });
+        const response = await fetch(`${STRAPI_URL}/api/beritas?populate=*&pagination[limit]=4`);
         const result = await response.json();
 
         if (result.data) {
