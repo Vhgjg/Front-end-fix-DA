@@ -13,11 +13,7 @@ export default function Members() {
     const fetchMembers = async () => {
       try {
         // Ambil data dari endpoint 'anggotas' dengan Authorization
-        const response = await fetch(`${STRAPI_URL}/api/anggotas?populate=*`, {
-          headers: {
-            Authorization: STRAPI_TOKEN ? `Bearer ${STRAPI_TOKEN}` : ''
-          }
-        });
+        const response = await fetch(`${STRAPI_URL}/api/anggotas?populate=*`);
         const result = await response.json();
 
         // Sebagai percobaan cukup 1 data dari database
