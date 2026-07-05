@@ -24,18 +24,20 @@ export default function Members() {
         const sampleData = result.data ? result.data.slice(0, 1) : [];
 
         // 2. Mapping data Strapi agar sesuai dengan format variabel 'members'
-        const formattedData = sampleData.map(item => {
-          return {
-            name: item.nama || "Tanpa Nama",
-            div: item.Sie || "Tanpa Divisi",
-            // Logika warna status: jika ada no_telp dianggap aktif (hijau), jika tidak (abu-abu)
-            color: item.telepon ? "bg-green-500" : "bg-gray-400",
-            img: item.foto?.url
-              ? `${STRAPI_URL}${item.foto.url}`
-              : "https://via.placeholder.com/150", // placeholder jika foto kosong
-            phone: item.telepon
-          };
-        });
+       const formattedData = sampleData.map(item => {
+  // Ambil atributnya dulu agar kodenya lebih pendek
+  const attr = item.attributes || item; 
+
+  return {
+    name: attr.nama || "Tanpa Nama",
+    div: attr.Sie || attr.sie || "Tanpa Divisi", // Antisipasi jika huruf 's' kecil
+    color: attr.telepon || attr.no_telp ? "bg-green-500" : "bg-gray-400",
+    img: attr.foto?.data?.attributes?.url
+      ? `${STRAPI_URL}${attr.foto.data.attributes.url}`
+      : "https://via.placeholder.com/150", 
+    phone: attr.telepon || attr.no_telp || ""
+  };
+});
 
         setMembers(formattedData);
         setLoading(false);
