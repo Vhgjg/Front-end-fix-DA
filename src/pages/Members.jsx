@@ -15,7 +15,7 @@ export default function Members() {
         // Ambil data dari endpoint 'anggotas' dengan Authorization
         const response = await fetch(`${STRAPI_URL}/api/anggotas?populate=*`, {
           headers: {
-            Authorization: `Bearer ${STRAPI_TOKEN}`
+            Authorization: STRAPI_TOKEN ? `Bearer ${STRAPI_TOKEN}` : ''
           }
         });
         const result = await response.json();
