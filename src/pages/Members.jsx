@@ -6,7 +6,7 @@ export default function Members() {
   const [loading, setLoading] = useState(true);
 
   // URL dan Token Strapi dari .env
-  const STRAPI_URL = import.meta.env.VITE_STRAPI_URL || "http://192.168.185.4:1337";
+  const STRAPI_URL = import.meta.env.VITE_STRAPI_URL || "http://202.155.18.152:1337";
   const STRAPI_TOKEN = import.meta.env.VITE_STRAPI_TOKEN;
 
   useEffect(() => {

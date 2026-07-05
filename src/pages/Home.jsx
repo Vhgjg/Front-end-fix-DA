@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-const STRAPI_URL = import.meta.env.VITE_STRAPI_URL || "http://192.168.185.4:1337";
+const STRAPI_URL = import.meta.env.VITE_STRAPI_URL || "http://202.155.18.152:1337";
 
 export default function Home() {
   const [news, setNews] = useState([]);
